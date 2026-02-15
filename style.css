@@ -83,41 +83,41 @@ body {
 }
 
 .heart-shape {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 90px;
     margin: 0 auto 20px;
-    background: var(--rose);
-    transform: rotate(-45deg);
-    animation: heartbeat 1s ease-in-out infinite;
-    border-radius: 50% 50% 0 0;
     position: relative;
+    animation: heartbeat 1s ease-in-out infinite;
 }
 
 .heart-shape::before,
 .heart-shape::after {
     content: '';
     position: absolute;
-    width: 60px;
-    height: 60px;
+    top: 0;
+    width: 52px;
+    height: 80px;
     background: var(--rose);
-    border-radius: 50%;
+    border-radius: 50px 50px 0 0;
 }
 
 .heart-shape::before {
-    top: -30px;
-    left: 0;
+    left: 50px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
 }
 
 .heart-shape::after {
-    top: 0;
-    left: 30px;
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
 }
 
 @keyframes heartbeat {
-    0%, 100% { transform: rotate(-45deg) scale(1); }
-    25% { transform: rotate(-45deg) scale(1.15); }
-    40% { transform: rotate(-45deg) scale(1); }
-    60% { transform: rotate(-45deg) scale(1.1); }
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.1); }
 }
 
 .loading-text {
