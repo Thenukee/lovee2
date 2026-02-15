@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 For You, My Love 💕</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-heart">
+            <div class="heart-shape"></div>
+            <p class="loading-text">Loading our love story...</p>
+        </div>
+    </div>
+
+    <!-- Floating Hearts Background -->
+    <div id="hearts-bg"></div>
+
+    <!-- Sparkle cursor trail -->
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <ul>
+            <li><a href="#hero" class="nav-link active">Home</a></li>
+            <li><a href="#love-letter" class="nav-link">Letter</a></li>
+            <li><a href="#reasons" class="nav-link">Reasons</a></li>
+            <li><a href="#timeline" class="nav-link">Us</a></li>
+            <li><a href="#gallery" class="nav-link">Moments</a></li>
+            <li><a href="#spicy" class="nav-link">🔥</a></li>
+            <li><a href="#promise" class="nav-link">Forever</a></li>
+        </ul>
+    </nav>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle" title="Play romantic music">
+        <span class="music-icon">🎵</span>
+    </button>
+
+    <!-- Section 1: Hero -->
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-particles" id="hero-particles"></div>
+        <div class="hero-content">
+            <div class="hero-hearts">
+                <span class="floating-emoji">💕</span>
+                <span class="floating-emoji delay-1">✨</span>
+                <span class="floating-emoji delay-2">🌹</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line reveal-text">Every love story is beautiful,</span>
+                <span class="title-line reveal-text delay-1">but ours is my</span>
+                <span class="title-line highlight reveal-text delay-2">favorite.</span>
+            </h1>
+            <div class="hero-subtitle reveal-text delay-3">
+                <p>This page is for you — the one who makes my heart skip a beat.</p>
+            </div>
+            <a href="#love-letter" class="scroll-down">
+                <span class="scroll-text">Read My Heart</span>
+                <span class="scroll-arrow">↓</span>
+            </a>
+        </div>
+        <div class="rose-petals" id="rose-petals"></div>
+    </section>
+
+    <!-- Section 2: Love Letter -->
+    <section id="love-letter">
+        <div class="section-bg love-letter-bg"></div>
+        <div class="container">
+            <div class="letter-envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <span class="envelope-heart">💌</span>
+                    <p class="envelope-text">Click to open my heart</p>
+                </div>
+            </div>
+            <div class="letter-paper" id="letter">
+                <div class="letter-header">
+                    <span class="letter-stamp">💋</span>
+                    <p class="letter-date">Written with all my love...</p>
+                </div>
+                <div class="letter-content">
+                    <p class="typewriter" id="love-text">
+                        My Dearest Love,
+                        <br><br>
+                        From the moment you walked into my life, everything changed. 
+                        The colors got brighter, the music got sweeter, and my heart 
+                        found its rhythm — beating only for you.
+                        <br><br>
+                        You are the first thought when I wake, the last whisper before 
+                        I sleep, and every beautiful dream in between. Your smile is my 
+                        sunrise, your laugh is my favorite melody, and your touch... 
+                        your touch sets my soul on fire. 🔥
+                        <br><br>
+                        I never knew what home felt like until I found it in your arms. 
+                        You are my safe place, my wild adventure, my calm in the storm, 
+                        and the storm in my calm.
+                        <br><br>
+                        I love you more than words could ever say, more than this page 
+                        could ever hold, more than forever could ever measure.
+                        <br><br>
+                        <span class="letter-signature">Forever & Always Yours,<br>— Thenuke 💕</span>
+                    </p>
+                </div>
+                <div class="letter-seal">
+                    <div class="wax-seal">
+                        <span>♥</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Reasons I Love You -->
+    <section id="reasons">
+        <div class="section-bg reasons-bg"></div>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration">✦</span>
+                Reasons I'm Crazy About You
+                <span class="title-decoration">✦</span>
+            </h2>
+            <div class="reasons-grid">
+                <div class="reason-card" data-delay="0">
+                    <div class="card-glow"></div>
+                    <span class="reason-icon">😍</span>
+                    <h3>Your Eyes</h3>
+                    <p>I get lost in them every single time. They hold entire galaxies that I want to explore forever.</p>
+                </div>
+                <div class="reason-card" data-delay="100">
+                    <div class="card-glow"></div>
+                    <span class="reason-icon">💋</span>
+                    <h3>Your Lips</h3>
+                    <p>Every kiss feels like the first time. Soft, electric, and absolutely intoxicating.</p>
+                </div>
+                <div class="reason-card" data-delay="200">
+                    <div class="card-glow"></div>
+                    <span class="reason-icon">😂</span>
+                    <h3>Your Laugh</h3>
+                    <p>The sound that makes everything better. I'd do anything just to hear it one more time.</p>
+                </div>
+                <div class="reason-card" data-delay="300">
+                    <div class="card-glow"></div>
+                    <span class="reason-icon">🤗</span>
+                    <h3>Your Hugs</h3>
+                    <p>The safest place in the entire universe. When you hold me, the whole world disappears.</p>
+                </div>
+                <div class="reason-card" data-delay="400">
+                    <div class="card-glow"></div>
+                    <span class="reason-icon">🧠</span>
+                    <h3>Your Mind</h3>
+                    <p>Smart, witty, and endlessly fascinating. Every conversation with you is an adventure.</p>
+                </div>
+                <div class="reason-card" data-delay="500">
+                    <div class="card-glow"></div>
+                    <span class="reason-icon">💃</span>
+                    <h3>Your Vibe</h3>
+                    <p>That irresistible energy that pulls me in. You walk into a room and own it without trying.</p>
+                </div>
+                <div class="reason-card" data-delay="600">
+                    <div class="card-glow"></div>
+                    <span class="reason-icon">🔥</span>
+                    <h3>Your Touch</h3>
+                    <p>Electric. Every brush of your fingers sends shivers down my spine. You drive me crazy.</p>
+                </div>
+                <div class="reason-card" data-delay="700">
+                    <div class="card-glow"></div>
+                    <span class="reason-icon">❤️‍🔥</span>
+                    <h3>Everything</h3>
+                    <p>Your flaws, your perfections, your chaos, your calm. I love ALL of you, unconditionally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Our Timeline -->
+    <section id="timeline">
+        <div class="section-bg timeline-bg"></div>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration">✦</span>
+                Our Story
+                <span class="title-decoration">✦</span>
+            </h2>
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-item left">
+                    <div class="timeline-dot"><span>💫</span></div>
+                    <div class="timeline-content">
+                        <h3>The Day We Met</h3>
+                        <p>The universe conspired to bring us together. One look and I knew — you were the one I'd been searching for my whole life.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-dot"><span>⚡</span></div>
+                    <div class="timeline-content">
+                        <h3>First Spark</h3>
+                        <p>That electric moment when our hands first touched. My heart hasn't stopped racing since.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-dot"><span>💕</span></div>
+                    <div class="timeline-content">
+                        <h3>Falling Deep</h3>
+                        <p>I didn't just fall in love — I dove headfirst into the deepest ocean of feelings I never knew existed.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-dot"><span>🔥</span></div>
+                    <div class="timeline-content">
+                        <h3>The Fire</h3>
+                        <p>Late night conversations that turned into early mornings. Every moment with you is a beautiful kind of madness.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-dot"><span>♾️</span></div>
+                    <div class="timeline-content">
+                        <h3>Now & Forever</h3>
+                        <p>This is just the beginning, baby. Our best chapters haven't even been written yet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Photo Gallery / Moments -->
+    <section id="gallery">
+        <div class="section-bg gallery-bg"></div>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration">✦</span>
+                Our Beautiful Moments
+                <span class="title-decoration">✦</span>
+            </h2>
+            <p class="gallery-subtitle">Every moment with you is a treasure I hold close to my heart</p>
+            <div class="polaroid-wall">
+                <div class="polaroid" style="--rotation: -5deg;">
+                    <div class="polaroid-image">
+                        <img src="Our First Photo.jpeg" alt="Our First Photo">
+                    </div>
+                    <p class="polaroid-caption">Where it all began 💕</p>
+                </div>
+                <div class="polaroid" style="--rotation: 3deg;">
+                    <div class="polaroid-image">
+                        <img src="Us Together.jpeg" alt="Us Together">
+                    </div>
+                    <p class="polaroid-caption">My favorite place: next to you</p>
+                </div>
+                <div class="polaroid" style="--rotation: -2deg;">
+                    <div class="polaroid-image">
+                        <img src="That Special Night.jpeg" alt="That Special Night">
+                    </div>
+                    <p class="polaroid-caption">Magic happens when I'm with you</p>
+                </div>
+                <div class="polaroid" style="--rotation: 4deg;">
+                    <div class="polaroid-image">
+                        <img src="Adventure Time.jpeg" alt="Adventure Time">
+                    </div>
+                    <p class="polaroid-caption">Every adventure is better with you</p>
+                </div>
+                <div class="polaroid" style="--rotation: -3deg;">
+                    <div class="polaroid-image">
+                        <img src="My Favorite Person.jpeg" alt="My Favorite Person">
+                    </div>
+                    <p class="polaroid-caption">You + Me = ♾️</p>
+                </div>
+                <div class="polaroid" style="--rotation: 2deg;">
+                    <div class="polaroid-image">
+                        <img src="Pure Happiness.jpeg" alt="Pure Happiness">
+                    </div>
+                    <p class="polaroid-caption">My heart smiles because of you</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 6: Spicy Section 🔥 -->
+    <section id="spicy">
+        <div class="section-bg spicy-bg"></div>
+        <div class="spicy-particles" id="spicy-particles"></div>
+        <div class="container">
+            <h2 class="section-title spicy-title">
+                <span class="fire-emoji">🔥</span>
+                Things I Want To Do With You
+                <span class="fire-emoji">🔥</span>
+            </h2>
+            <div class="spicy-cards-container">
+                <div class="spicy-card" onclick="this.classList.toggle('flipped')">
+                    <div class="spicy-card-inner">
+                        <div class="spicy-card-front">
+                            <span class="spicy-number">01</span>
+                            <span class="tap-text">tap me 😏</span>
+                        </div>
+                        <div class="spicy-card-back">
+                            <p>Kiss you slowly under the stars until we both forget what time is 🌙</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spicy-card" onclick="this.classList.toggle('flipped')">
+                    <div class="spicy-card-inner">
+                        <div class="spicy-card-front">
+                            <span class="spicy-number">02</span>
+                            <span class="tap-text">tap me 😏</span>
+                        </div>
+                        <div class="spicy-card-back">
+                            <p>Slow dance with you in the kitchen at 2 AM with no music — just our heartbeats 💃</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spicy-card" onclick="this.classList.toggle('flipped')">
+                    <div class="spicy-card-inner">
+                        <div class="spicy-card-front">
+                            <span class="spicy-number">03</span>
+                            <span class="tap-text">tap me 😏</span>
+                        </div>
+                        <div class="spicy-card-back">
+                            <p>Pull you close by the waist and whisper all the things that make you blush 🥵</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spicy-card" onclick="this.classList.toggle('flipped')">
+                    <div class="spicy-card-inner">
+                        <div class="spicy-card-front">
+                            <span class="spicy-number">04</span>
+                            <span class="tap-text">tap me 😏</span>
+                        </div>
+                        <div class="spicy-card-back">
+                            <p>Road trip to nowhere — just you, me, the sunset, and a playlist of our songs 🚗💨</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spicy-card" onclick="this.classList.toggle('flipped')">
+                    <div class="spicy-card-inner">
+                        <div class="spicy-card-front">
+                            <span class="spicy-number">05</span>
+                            <span class="tap-text">tap me 😏</span>
+                        </div>
+                        <div class="spicy-card-back">
+                            <p>Trace every inch of your face with my fingertips and memorize it like a love poem 🖤</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spicy-card" onclick="this.classList.toggle('flipped')">
+                    <div class="spicy-card-inner">
+                        <div class="spicy-card-front">
+                            <span class="spicy-number">06</span>
+                            <span class="tap-text">tap me 😏</span>
+                        </div>
+                        <div class="spicy-card-back">
+                            <p>Spend an entire rainy day in bed — tangled up in blankets and each other 🌧️❤️‍🔥</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spicy-card" onclick="this.classList.toggle('flipped')">
+                    <div class="spicy-card-inner">
+                        <div class="spicy-card-front">
+                            <span class="spicy-number">07</span>
+                            <span class="tap-text">tap me 😏</span>
+                        </div>
+                        <div class="spicy-card-back">
+                            <p>Cook together but get so distracted by you that dinner burns... worth it 😘🍳</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="spicy-card" onclick="this.classList.toggle('flipped')">
+                    <div class="spicy-card-inner">
+                        <div class="spicy-card-front">
+                            <span class="spicy-number">08</span>
+                            <span class="tap-text">tap me 😏</span>
+                        </div>
+                        <div class="spicy-card-back">
+                            <p>Wake you up with neck kisses and breakfast in bed... the kisses come first though 😈💋</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Promise / Forever -->
+    <section id="promise">
+        <div class="section-bg promise-bg"></div>
+        <div class="promise-stars" id="promise-stars"></div>
+        <div class="container">
+            <div class="promise-content">
+                <div class="infinity-symbol">∞</div>
+                <h2 class="promise-title">My Promise To You</h2>
+                <div class="promise-text">
+                    <p>I promise to love you on your best days and hold you on your worst.</p>
+                    <p>I promise to be your biggest fan, your safest place, and your greatest adventure.</p>
+                    <p>I promise to choose you — today, tomorrow, and every single day after that.</p>
+                    <p>I promise that my love for you will never have an expiration date.</p>
+                    <p class="promise-highlight">You are my forever. 💍</p>
+                </div>
+                <div class="love-counter">
+                    <p class="counter-label">Days I've Been Lucky To Love You:</p>
+                    <div class="counter-display" id="love-counter">
+                        <span class="counter-num" id="counter-days">---</span>
+                        <span class="counter-text">days</span>
+                    </div>
+                    <p class="counter-subtitle">...and counting forever</p>
+                </div>
+                <div class="final-message">
+                    <button class="secret-btn" id="secret-btn">
+                        <span>Press for a secret message 💌</span>
+                    </button>
+                    <div class="secret-message" id="secret-message">
+                        <p class="secret-text">You are the best thing that ever happened to me.<br>
+                        I love you more than you'll ever know.<br>
+                        And I fall deeper in love with you every single day.<br><br>
+                        <strong>You're stuck with me forever, baby.<br>— Your Thenuke 😘❤️‍🔥</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-hearts">❤️ 💕 ❤️</div>
+        <p>Made with infinite love, just for you — by Thenuke</p>
+        <p class="footer-small">© Forever & Always | Thenuke + You = ♾️</p>
+    </footer>
+
+    <!-- Kiss explosion on click -->
+    <div id="kiss-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
