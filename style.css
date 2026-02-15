@@ -30,6 +30,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-snap-type: y proximity;
 }
 
 body {
@@ -294,6 +295,88 @@ section {
     justify-content: center;
     padding: 100px 20px;
     overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+}
+
+/* Section Navigation Arrows */
+.section-nav-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    transition: all 0.4s ease;
+}
+
+.section-nav-arrow:hover {
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.arrow-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 0.95rem;
+    color: var(--blush);
+    opacity: 0.7;
+    margin-bottom: 5px;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.section-nav-arrow:hover .arrow-text {
+    opacity: 1;
+}
+
+.arrow-icon {
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid var(--rose);
+    border-bottom: 2px solid var(--rose);
+    transform: rotate(45deg);
+    animation: arrowBounce 2s ease-in-out infinite;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.section-nav-arrow:hover .arrow-icon {
+    opacity: 1;
+    border-color: var(--gold);
+}
+
+@keyframes arrowBounce {
+    0%, 100% { transform: rotate(45deg) translate(0, 0); }
+    50% { transform: rotate(45deg) translate(5px, 5px); }
+}
+
+/* Section transition overlay */
+.section-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.section-transition.active {
+    opacity: 1;
+    animation: romanticFade 0.8s ease-out forwards;
+}
+
+@keyframes romanticFade {
+    0% { background: radial-gradient(circle, rgba(231,76,111,0.3) 0%, transparent 70%); opacity: 1; }
+    100% { background: radial-gradient(circle, rgba(231,76,111,0) 0%, transparent 70%); opacity: 0; }
 }
 
 .container {

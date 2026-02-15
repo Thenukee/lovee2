@@ -215,13 +215,50 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
+// Custom smooth scroll with romantic easing
+function smoothScrollTo(target, duration = 1200) {
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    // Romantic ease-in-out curve
+    function easeInOutCubic(t) {
+        return t < 0.5 
+            ? 4 * t * t * t 
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeInOutCubic(progress);
+
+        window.scrollTo(0, startPosition + distance * eased);
+
+        if (progress < 1) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    // Show romantic transition flash
+    const flash = document.getElementById('section-transition');
+    if (flash) {
+        flash.classList.add('active');
+        setTimeout(() => flash.classList.remove('active'), 800);
+    }
+
+    requestAnimationFrame(animation);
+}
+
 // Smooth scroll for nav links
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const target = document.querySelector(link.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            smoothScrollTo(target, 1200);
         }
     });
 });
@@ -497,15 +534,89 @@ console.log('%c Made with ❤️ for someone special',
     'font-size: 12px; color: #f6b93b;');
 
 // ===========================
+// SECTION NAVIGATION ARROWS
+// ===========================
+function createSectionArrows() {
+    const sections = document.querySelectorAll('section');
+    const sectionNames = {
+        'hero': 'Read my letter 💌',
+        'love-letter': 'Why I love you ❤️',
+        'reasons': 'Our story 💫',
+        'timeline': 'Our moments 📸',
+        'gallery': 'Get spicy 🔥',
+        'spicy': 'My promise 💍',
+    };
+
+    sections.forEach((section, i) => {
+        if (i < sections.length - 1) {
+            const arrow = document.createElement('button');
+            arrow.className = 'section-nav-arrow';
+            arrow.innerHTML = `
+                <span class="arrow-text">${sectionNames[section.id] || 'Continue ↓'}</span>
+                <span class="arrow-icon"></span>
+            `;
+            arrow.addEventListener('click', () => {
+                smoothScrollTo(sections[i + 1], 1200);
+            });
+            section.appendChild(arrow);
+        }
+    });
+}
+
+// ===========================
+// KEYBOARD NAVIGATION
+// ===========================
+let currentSectionIndex = 0;
+const allSections = () => document.querySelectorAll('section');
+
+function getCurrentSection() {
+    const sections = allSections();
+    const scrollPos = window.pageYOffset + window.innerHeight / 3;
+    let idx = 0;
+    sections.forEach((section, i) => {
+        if (scrollPos >= section.offsetTop) idx = i;
+    });
+    return idx;
+}
+
+document.addEventListener('keydown', (e) => {
+    // Don't interfere with Konami code
+    if (e.code.startsWith('Arrow') && !e.ctrlKey && !e.altKey) {
+        const sections = allSections();
+        const current = getCurrentSection();
+
+        if ((e.code === 'ArrowDown' || e.code === 'ArrowRight') && current < sections.length - 1) {
+            // Only navigate sections with ArrowDown (not ArrowRight, to preserve Konami)
+            if (e.code === 'ArrowDown') {
+                e.preventDefault();
+                smoothScrollTo(sections[current + 1], 1000);
+            }
+        } else if (e.code === 'ArrowUp' && current > 0) {
+            e.preventDefault();
+            smoothScrollTo(sections[current - 1], 1000);
+        }
+    }
+});
+
+// ===========================
 // INIT: When DOM is fully ready
 // ===========================
 document.addEventListener('DOMContentLoaded', () => {
-    // Add smooth scrolling to the scroll-down button
+    // Create section arrows
+    createSectionArrows();
+
+    // Create romantic transition overlay
+    const transitionEl = document.createElement('div');
+    transitionEl.className = 'section-transition';
+    transitionEl.id = 'section-transition';
+    document.body.appendChild(transitionEl);
+
+    // Smooth scrolling for scroll-down button
     const scrollDownBtn = document.querySelector('.scroll-down');
     if (scrollDownBtn) {
         scrollDownBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            document.getElementById('love-letter').scrollIntoView({ behavior: 'smooth' });
+            smoothScrollTo(document.getElementById('love-letter'), 1200);
         });
     }
 });
