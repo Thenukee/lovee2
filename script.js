@@ -314,7 +314,7 @@ secretBtn.addEventListener('click', () => {
 // LOVE COUNTER
 // ==========================
 // SET YOUR RELATIONSHIP START DATE HERE!
-const startDate = new Date('2024-01-01'); // 🔥 Change this to your actual date!
+const startDate = new Date('2025-09-20'); // 💕 The day Thenuke asked her out!
 
 function updateLoveCounter() {
     const now = new Date();
