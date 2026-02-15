@@ -215,38 +215,62 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Custom smooth scroll with romantic easing
-function smoothScrollTo(target, duration = 1200) {
+// Custom smooth scroll with buttery romantic easing
+let isScrolling = false;
+function smoothScrollTo(target, duration = 1400) {
+    if (isScrolling) return;
+    isScrolling = true;
+
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     let startTime = null;
 
-    // Romantic ease-in-out curve
-    function easeInOutCubic(t) {
-        return t < 0.5 
-            ? 4 * t * t * t 
-            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    // Silky romantic ease — slow start, smooth glide, gentle land
+    function romanticEase(t) {
+        // Custom bezier-like curve: very smooth acceleration and deceleration
+        if (t < 0.5) {
+            return 4 * t * t * t;
+        } else {
+            const f = (2 * t - 2);
+            return 0.5 * f * f * f + 1;
+        }
     }
 
     function animation(currentTime) {
         if (startTime === null) startTime = currentTime;
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = easeInOutCubic(progress);
+        const eased = romanticEase(progress);
 
         window.scrollTo(0, startPosition + distance * eased);
 
         if (progress < 1) {
             requestAnimationFrame(animation);
+        } else {
+            isScrolling = false;
         }
     }
 
     // Show romantic transition flash
     const flash = document.getElementById('section-transition');
     if (flash) {
+        flash.classList.remove('active');
+        void flash.offsetWidth; // force reflow
         flash.classList.add('active');
-        setTimeout(() => flash.classList.remove('active'), 800);
+        setTimeout(() => flash.classList.remove('active'), 1000);
+    }
+
+    // Scatter hearts along the scroll direction
+    const dir = distance > 0 ? 1 : -1;
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+            createHeartExplosion(
+                window.innerWidth / 2 + (Math.random() - 0.5) * 300,
+                window.innerHeight / 2 + dir * (Math.random() * 100),
+                3
+            );
+        }, i * 150);
     }
 
     requestAnimationFrame(animation);
@@ -546,17 +570,52 @@ function createSectionArrows() {
         'gallery': 'Get spicy 🔥',
         'spicy': 'My promise 💍',
     };
+    const sectionHearts = {
+        'hero': '💌',
+        'love-letter': '❤️',
+        'reasons': '💫',
+        'timeline': '📸',
+        'gallery': '🔥',
+        'spicy': '💍',
+    };
 
     sections.forEach((section, i) => {
         if (i < sections.length - 1) {
             const arrow = document.createElement('button');
             arrow.className = 'section-nav-arrow';
+            const heartEmoji = sectionHearts[section.id] || '💕';
+
+            // Build particle HTML
+            let particlesHTML = '';
+            for (let p = 0; p < 8; p++) {
+                const angle = (p / 8) * Math.PI * 2;
+                const tx = Math.cos(angle) * (20 + Math.random() * 15);
+                const ty = Math.sin(angle) * (20 + Math.random() * 15);
+                const dur = 2 + Math.random() * 2;
+                const delay = Math.random() * 2;
+                const colors = ['var(--rose)', 'var(--gold)', 'var(--blush)', 'var(--hot-pink)'];
+                const color = colors[p % colors.length];
+                particlesHTML += `<span class="arrow-particle" style="left:50%;top:50%;--tx:${tx}px;--ty:${ty}px;--dur:${dur}s;--delay:${delay}s;background:${color}"></span>`;
+            }
+
             arrow.innerHTML = `
                 <span class="arrow-text">${sectionNames[section.id] || 'Continue ↓'}</span>
-                <span class="arrow-icon"></span>
+                <div class="arrow-circle">
+                    <div class="arrow-ring"></div>
+                    <div class="arrow-ring-2"></div>
+                    <div class="arrow-glow"></div>
+                    <span class="arrow-heart">${heartEmoji}</span>
+                    <div class="arrow-particles">${particlesHTML}</div>
+                </div>
+                <div class="arrow-shimmer"></div>
+                <div class="arrow-chevrons">
+                    <span class="arrow-chevron"></span>
+                    <span class="arrow-chevron"></span>
+                    <span class="arrow-chevron"></span>
+                </div>
             `;
             arrow.addEventListener('click', () => {
-                smoothScrollTo(sections[i + 1], 1200);
+                smoothScrollTo(sections[i + 1], 1400);
             });
             section.appendChild(arrow);
         }
